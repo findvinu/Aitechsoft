@@ -1,0 +1,38 @@
+.todoItem {
+  display: flex;
+  align-items: center;
+}
+
+.todoItem span {
+  margin-right: 10px;
+}
+.todoList ul{
+  list-style-type: none;
+  margin: 0;
+  padding:0;
+}
+
+.completed{
+  text-decoration:line-through;
+  color: green
+}
+
+.todoListBtn{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.error{
+  color: rgb(255, 0, 0);
+  font-size: 11px;
+}
+
+.nav a{
+  color: #fff;
+  text-decoration: none
+}
+
+.nav a.active{
+  text-decoration: underline
+}

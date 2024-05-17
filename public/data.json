@@ -1,0 +1,81 @@
+{
+    "data": [
+      {
+        "product_id": "1",
+        "product_name": "hyundai i20",
+        "sales_count": "300",
+        "sale_month": "feb",
+        "sale_year": "2023"
+      },
+      {
+        "product_id": "2",
+        "product_name": "breeza",
+        "sales_count": "500",
+        "sale_month": "feb",
+        "sale_year": "2023"
+      },
+      {
+        "product_id": "3",
+        "product_name": "mahindra xuv 300",
+        "sales_count": "100",
+        "sale_month": "feb",
+        "sale_year": "2023"
+      },
+      {
+        "product_id": "4",
+        "product_name": "hyundai Elantra",
+        "sales_count": "10",
+        "sale_month": "march",
+        "sale_year": "2023"
+      },
+      {
+        "product_id": "5",
+        "product_name": "Honda City",
+        "sales_count": "50",
+        "sale_month": "march",
+        "sale_year": "2023"
+      },
+      {
+        "product_id": "6",
+        "product_name": "honda jazz",
+        "sales_count": "5",
+        "sale_month": "march",
+        "sale_year": "2024"
+      },
+      {
+        "product_id": "7",
+        "product_name": "swift dzire",
+        "sales_count": "600",
+        "sale_month": "april",
+        "sale_year": "2024"
+      },
+      {
+        "product_id": "8",
+        "product_name": "ALTO K10",
+        "sales_count": "900",
+        "sale_month": "april",
+        "sale_year": "2024"
+      },
+      {
+        "product_id": "9",
+        "product_name": "KIA SONET",
+        "sales_count": "400",
+        "sale_month": "april",
+        "sale_year": "2024"
+      },
+      {
+        "product_id": "10",
+        "product_name": "tata altroz",
+        "sales_count": "1000",
+        "sale_month": "may",
+        "sale_year": "2024"
+      },
+      {
+        "product_id": "11",
+        "product_name": "hyundai aura",
+        "sales_count": "400",
+        "sale_month": "may",
+        "sale_year": "2024"
+      }
+    ]
+  }
