@@ -1,6 +1,6 @@
 import { DataGrid } from '@mui/x-data-grid';
 import { useState } from 'react';
-import { generateProductId, validateSalesCount } from './utils';
+import { generateProductId, validateSalesCount } from "../../utils";
 import moment from 'moment';
 
 const EditableDataGrid = ({ data, handleRowUpdate }) => {

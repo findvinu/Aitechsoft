@@ -1,15 +1,66 @@
-// StepperComponent.js
 import React, { useState } from "react";
-import { Stepper, Step, StepLabel, Button } from "@mui/material";
+import { Stepper, Step, StepLabel, Button, Box } from "@mui/material";
 import ProductDetailsForm from "./ProductDetailsForm";
 import RemarksForm from "./RemarksForm";
 import HeaderDetailsForm from "./HeaderDetailsForm";
 
 const StepperComponent = () => {
   const [activeStep, setActiveStep] = useState(0);
+  const [productDetails, setProductDetails] = useState({
+    productName: "",
+    salesCount: "",
+    saleMonth: "",
+    saleYear: "",
+  });
+  const [errors, setErrors] = useState({
+    productName: false,
+    salesCount: false,
+    saleMonth: false,
+    saleYear: false,
+  });
+  const [remarks, setRemarks] = useState("");
   const steps = ["Product Details", "Remarks", "Header & Details"];
 
+  const validateFields = () => {
+    let valid = true;
+    const newErrors = {
+      productName: false,
+      salesCount: false,
+      saleMonth: false,
+      saleYear: false,
+    };
+
+    if (productDetails.productName.trim() === "") {
+      newErrors.productName = true;
+      valid = false;
+    }
+    if (
+      productDetails.salesCount.trim() === "" ||
+      isNaN(productDetails.salesCount)
+    ) {
+      newErrors.salesCount = true;
+      valid = false;
+    }
+    if (productDetails.saleMonth.trim() === "") {
+      newErrors.saleMonth = true;
+      valid = false;
+    }
+    if (
+      productDetails.saleYear.trim() === "" ||
+      isNaN(productDetails.saleYear)
+    ) {
+      newErrors.saleYear = true;
+      valid = false;
+    }
+
+    setErrors(newErrors);
+    return valid;
+  };
+
   const handleNext = () => {
+    if (activeStep === 0 && !validateFields()) {
+      return;
+    }
     setActiveStep((prevStep) => prevStep + 1);
   };
 
@@ -17,14 +68,88 @@ const StepperComponent = () => {
     setActiveStep((prevStep) => prevStep - 1);
   };
 
+  const handleSaveAndClose = () => {
+    // Mock save operation
+    console.log("Saving data...");
+
+    setTimeout(() => {
+      console.log("Data saved:", {
+        productDetails,
+        remarks,
+      });
+
+      // Simulate closing the form
+      alert("Transaction saved and closed.");
+
+      // Reset all state and go back to the first step
+      setActiveStep(0);
+      setProductDetails({
+        productName: "",
+        salesCount: "",
+        saleMonth: "",
+        saleYear: "",
+      });
+      setRemarks("");
+      setErrors({
+        productName: false,
+        salesCount: false,
+        saleMonth: false,
+        saleYear: false,
+      });
+    }, 1000); // Simulate a delay of 1 second
+  };
+
+  const handleRestart = () => {
+    // Reset all state and go back to the first step
+    setActiveStep(0);
+    setProductDetails({
+      productName: "",
+      salesCount: "",
+      saleMonth: "",
+      saleYear: "",
+    });
+    setRemarks("");
+    setErrors({
+      productName: false,
+      salesCount: false,
+      saleMonth: false,
+      saleYear: false,
+    });
+  };
+
   const getStepContent = (stepIndex) => {
     switch (stepIndex) {
       case 0:
-        return <ProductDetailsForm />;
+        return (
+          <Box sx={{ mt: 5, mb: 5 }}>
+            <ProductDetailsForm
+              productDetails={productDetails}
+              setProductDetails={setProductDetails}
+              errors={errors}
+            />
+          </Box>
+        );
       case 1:
-        return <RemarksForm />;
+        return (
+          <Box sx={{ mt: 5, mb: 5 }}>
+            <RemarksForm
+              remarks={remarks}
+              setRemarks={setRemarks}
+              productDetails={productDetails}
+            />
+          </Box>
+        );
       case 2:
-        return <HeaderDetailsForm />;
+        return (
+          <Box sx={{ mt: 5, mb: 5 }}>
+            <HeaderDetailsForm
+              remarks={remarks}
+              gridData={[productDetails]}
+              onSaveAndClose={handleSaveAndClose}
+              onRestart={handleRestart}
+            />
+          </Box>
+        );
       default:
         return "Unknown stepIndex";
     }
@@ -32,7 +157,7 @@ const StepperComponent = () => {
 
   return (
     <div>
-      <Stepper activeStep={activeStep}>
+      <Stepper activeStep={activeStep} sx={{ mt: 5, mb: 5 }}>
         {steps.map((label) => (
           <Step key={label}>
             <StepLabel>{label}</StepLabel>

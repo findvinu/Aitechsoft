@@ -1,8 +1,8 @@
 import { DataGrid } from "@mui/x-data-grid";
 import TableCell from "@mui/material/TableCell";
 import TableRow from "@mui/material/TableRow";
-import AddRowComponent from "../pages/Products/AddRowComponent";
-import EditRowComponent from "../pages/Products/EditRowComponent"; 
+import AddRowComponent from "../pages/products/AddRowComponent";
+import EditRowComponent from "../pages/products/EditRowComponent"; 
 
 const DataGridTable = ({ rows, columns, onRowDelete, onRowEdit }) => {
   const handleRowDelete = (productId) => {

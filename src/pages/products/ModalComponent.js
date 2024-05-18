@@ -1,20 +1,16 @@
-import { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Modal, Box, TextField, Button } from "@mui/material";
-import { useDispatch } from "react-redux";
-import { addRow, updateRow } from "../store/gridSlice";
 
-const ModalComponent = () => {
-  const [rowData, setRowData] = useState();
-  const dispatch = useDispatch(row || {});
+const ModalComponent = ({ closeHandler, open, initialData, handleRowSave }) => {
+  const [rowData, setRowData] = useState(initialData || {});
+
+  useEffect(() => {
+    setRowData(initialData || {});
+  }, [initialData]);
 
   const rowSaveHandler = () => {
-    if (rowData.productId) {
-      dispatch(updateRow(rowData));
-    } else {
-      dispatch(addRow(rowData));
-    }
-
-    closeHandler();
+    handleRowSave(rowData);
+    console.log("rowData", rowData);
   };
 
   const rowChangeHandler = (e) => {
@@ -26,35 +22,56 @@ const ModalComponent = () => {
   };
 
   return (
-    <Modal open={open} onClose={rowChangeHandler}>
-      <Box sx={{ width: 400, bgcolor: "background.paper", p: 2 }}>
+    <Modal open={open} onClose={closeHandler}>
+      <Box
+        sx={{
+          width: 400,
+          bgcolor: "background.paper",
+          p: 2,
+          mx: "auto",
+          my: 4,
+        }}
+      >
         <TextField
-          name="productId"
-          label="Product ID"
-          value={rowData.productId}
+          name="product_name"
+          label="Product Name"
+          value={rowData.product_name || ""}
           onChange={rowChangeHandler}
+          fullWidth
+          margin="normal"
         />
         <TextField
-          name="name"
-          label="Name"
-          value={rowData.name}
+          name="sales_count"
+          label="Sales Count"
+          value={rowData.sales_count || ""}
           onChange={rowChangeHandler}
+          fullWidth
+          margin="normal"
         />
         <TextField
-          name="description"
-          label="Description"
-          value={rowData.description}
+          name="sale_month"
+          label="Sale Month"
+          value={rowData.sale_month || ""}
           onChange={rowChangeHandler}
+          fullWidth
+          margin="normal"
         />
         <TextField
-          name="price"
-          label="Price"
-          value={rowData.price}
+          name="sale_year"
+          label="Sale Year"
+          value={rowData.sale_year || ""}
           onChange={rowChangeHandler}
+          fullWidth
+          margin="normal"
         />
-        <Button variant="contained" onClick={rowSaveHandler}>
-          Save
-        </Button>
+        <Box sx={{ display: "flex", justifyContent: "flex-end", mt: 2 }}>
+          <Button variant="contained" onClick={rowSaveHandler} sx={{ mr: 2 }}>
+            Save
+          </Button>
+          <Button variant="outlined" onClick={closeHandler}>
+            Cancel
+          </Button>
+        </Box>
       </Box>
     </Modal>
   );

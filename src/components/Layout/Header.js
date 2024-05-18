@@ -2,8 +2,10 @@ import { AppBar, Typography, Toolbar, Button, Box } from "@mui/material/";
 import { NavLink } from "react-router-dom";
 
 const navItems = [
+  { name: "Home", link: "/" },
   { name: "Product List", link: "/grid-table" },
   { name: "Stepper", link: "/stepper" },
+  { name: "Tabs", link: "/tabs" },
 ];
 
 const Header = () => {

@@ -1,9 +1,9 @@
 import { Button, TextField, TableCell } from "@mui/material";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { addRow } from '../../store/slices/gridSlice';
+import { addRow } from "../../store/slices/gridSlice";
 
-const AddRowComponent = ({lastProductItemId}) => {
+const AddRowComponent = ({ lastProductItemId, openAddRowModal }) => {
   const dispatch = useDispatch();
   const [rowData, setRowData] = useState({
     product_id: lastProductItemId,
@@ -30,7 +30,7 @@ const AddRowComponent = ({lastProductItemId}) => {
     ) {
       dispatch(addRow(rowData));
       setRowData((prevData) => ({
-        product_id: prevData.product_id + 1, // Auto-increment Product ID for next row
+        product_id: prevData.product_id + 1,
         product_name: "",
         sales_count: "",
         sale_month: "",
@@ -105,8 +105,21 @@ const AddRowComponent = ({lastProductItemId}) => {
         />
       </TableCell>
       <TableCell>
-        <Button variant="contained" onClick={addRowHandler} sx={{ mt: 1.7 }}>
+        <Button
+          variant="contained"
+          onClick={addRowHandler}
+          sx={{ mt: 1.7, width: "100px" }}
+        >
           Add Row
+        </Button>
+      </TableCell>
+      <TableCell>
+        <Button
+          variant="contained"
+          onClick={openAddRowModal}
+          sx={{ mt: 1.7, width: "170px" }}
+        >
+          Add Row in Popup
         </Button>
       </TableCell>
     </>
