@@ -5,7 +5,7 @@ import App from "./App";
 import CssBaseline from "@mui/material/CssBaseline";
 import store from "./store/store";
 import { Provider } from "react-redux";
-import { BrowserRouter as Router } from "react-router-dom";
+import { HashRouter as Router } from "react-router-dom";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(

@@ -11,7 +11,7 @@ const App = () => {
   useEffect(() => {
     // Simulated API call
     const fetchData = async () => {
-      const response = await fetch('../../data.json');
+      const response = await fetch(`${process.env.PUBLIC_URL}/data.json`);
       const data = await response.json();
       dispatch(setData(data.data));
     };
