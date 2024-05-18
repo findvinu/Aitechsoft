@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/aitechsoft/static/css/main.6f517c88.css",
+    "main.js": "/aitechsoft/static/js/main.df9a5c4d.js",
+    "index.html": "/aitechsoft/index.html",
+    "main.6f517c88.css.map": "/aitechsoft/static/css/main.6f517c88.css.map",
+    "main.df9a5c4d.js.map": "/aitechsoft/static/js/main.df9a5c4d.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.6f517c88.css",
+    "static/js/main.df9a5c4d.js"
+  ]
+}
