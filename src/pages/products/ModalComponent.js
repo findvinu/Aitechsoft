@@ -1,5 +1,6 @@
 import React, { useState, useEffect, forwardRef } from "react";
-import { Modal, Box, TextField, Button } from "@mui/material";
+import { Modal, Box, TextField } from "@mui/material";
+import { ButtonComponent as Button } from "../../components/";
 
 const ModalContent = forwardRef(
   ({ rowData, rowChangeHandler, rowSaveHandler, closeHandler }, ref) => (

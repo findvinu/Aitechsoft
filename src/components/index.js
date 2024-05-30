@@ -1,5 +1,6 @@
 import Input from "./Input";
-import Button from "./Button";
+import ButtonComponent from "./Button/Button";
 import Checkbox from "./Checkbox";
+import CardComponent from "./Card/Card";
 
-export {Input, Button, Checkbox}
+export { Input, ButtonComponent, Checkbox, CardComponent };

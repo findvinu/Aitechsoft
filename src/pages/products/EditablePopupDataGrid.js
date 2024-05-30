@@ -2,6 +2,7 @@ import { DataGrid } from '@mui/x-data-grid';
 import { useState } from 'react';
 import { generateProductId, validateSalesCount } from "../../utils";
 import moment from "moment";
+import { ButtonComponent as Button } from "../../components/";
 
 const EditablePopupDataGrid = ({ data = [], handleRowUpdate }) => {
   const [rows, setRows] = useState(data);
@@ -81,7 +82,7 @@ const EditablePopupDataGrid = ({ data = [], handleRowUpdate }) => {
         onCellClick={(params) => handleEditRow(params.id)}
         disableSelectionOnClick
       />
-      <button onClick={handleAddRow}>Add Row</button>
+      <Button onClick={handleAddRow}>Add Row</Button>
     </div>
   );
 };

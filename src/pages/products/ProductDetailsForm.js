@@ -1,5 +1,5 @@
 import React from "react";
-import { TextField, Box, Button } from "@mui/material";
+import { TextField, Box, ButtonComponent as Button } from "@mui/material";
 
 const ProductDetailsForm = ({ productDetails, setProductDetails, errors }) => {
   const handleChange = (e) => {

@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import {
-  Button,
   Box,
   Table,
   TableBody,
@@ -10,6 +9,7 @@ import {
   TableRow,
   Paper,
 } from "@mui/material";
+import { ButtonComponent as Button } from "../../components/";
 
 const HeaderDetailsForm = ({
   remarks,
@@ -61,15 +61,10 @@ const HeaderDetailsForm = ({
         )}
       </div>
       <div>
-        <Button
-          variant="contained"
-          color="primary"
-          onClick={onSaveAndClose}
-          sx={{ mr: 1 }}
-        >
+        <Button variant="contained" onClick={onSaveAndClose} sx={{ mr: 1 }}>
           Save & Close
         </Button>
-        <Button variant="outlined" color="secondary" onClick={onRestart}>
+        <Button variant="outlined" onClick={onRestart}>
           Restart
         </Button>
       </div>

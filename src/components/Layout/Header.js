@@ -20,8 +20,8 @@ const Header = () => {
           Aitechsoft
         </Typography>
         <Box sx={{ display: { xs: "none", sm: "block" } }}>
-          {navItems.map((item) => (
-            <Button key={item} sx={{ color: "#fff" }}>
+          {navItems.map((item, key) => (
+            <Button key={key} sx={{ color: "#fff" }}>
               <Typography variant="subtitle2" component="span">
                 <NavLink
                   to={item.link}

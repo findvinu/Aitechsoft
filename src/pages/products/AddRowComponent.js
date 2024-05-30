@@ -1,7 +1,8 @@
-import { Button, TextField, TableCell } from "@mui/material";
+import { TextField, TableCell, TableRow } from "@mui/material";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { addRow } from "../../store/slices/gridSlice";
+import { ButtonComponent as Button } from "../../components/";
 
 const AddRowComponent = ({ lastProductItemId, openAddRowModal }) => {
   const dispatch = useDispatch();
@@ -58,7 +59,7 @@ const AddRowComponent = ({ lastProductItemId, openAddRowModal }) => {
   };
 
   return (
-    <>
+    <TableRow sx={{ display: { xs: "none", md: "block" } }}>
       <TableCell>
         <TextField
           name="product_id"
@@ -122,7 +123,7 @@ const AddRowComponent = ({ lastProductItemId, openAddRowModal }) => {
           Add Row in Popup
         </Button>
       </TableCell>
-    </>
+    </TableRow>
   );
 };
 

@@ -1,8 +1,9 @@
 import React, { useState } from "react";
-import { Stepper, Step, StepLabel, Button, Box } from "@mui/material";
+import { Stepper, Step, StepLabel, Box } from "@mui/material";
 import ProductDetailsForm from "./ProductDetailsForm";
 import RemarksForm from "./RemarksForm";
 import HeaderDetailsForm from "./HeaderDetailsForm";
+import { ButtonComponent as Button } from "../../components/";
 
 const StepperComponent = () => {
   const [activeStep, setActiveStep] = useState(0);
@@ -158,8 +159,8 @@ const StepperComponent = () => {
   return (
     <div>
       <Stepper activeStep={activeStep} sx={{ mt: 5, mb: 5 }}>
-        {steps.map((label) => (
-          <Step key={label}>
+        {steps.map((label, inx) => (
+          <Step key={inx}>
             <StepLabel>{label}</StepLabel>
           </Step>
         ))}
@@ -173,7 +174,11 @@ const StepperComponent = () => {
           <div>
             <div>{getStepContent(activeStep)}</div>
             <div>
-              <Button disabled={activeStep === 0} onClick={handleBack}>
+              <Button
+                type="text"
+                disabled={activeStep === 0}
+                onClick={handleBack}
+              >
                 Back
               </Button>
               <Button variant="contained" onClick={handleNext}>

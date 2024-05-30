@@ -1,12 +1,14 @@
 import React, { useState, useMemo } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { DataGrid } from '@mui/x-data-grid';
-import { Button, TextField } from "@mui/material";
+import { DataGrid } from "@mui/x-data-grid";
+import { TextField, useMediaQuery } from "@mui/material";
 import { updateRow, addRow, deleteRow } from "../../store/slices/gridSlice";
 import { validateSalesCount, generateProductId } from "../../utils";
 import moment from "moment";
 import AddRowComponent from "./AddRowComponent";
 import ModalComponent from "./ModalComponent";
+import { ButtonComponent as Button } from "../../components/";
+import styles from "./GridTable.module.css";
 
 const GridTable = () => {
   const [editingRowId, setEditingRowId] = useState(null);
@@ -103,56 +105,96 @@ const GridTable = () => {
     return value;
   };
 
+  const isSmallScreen = useMediaQuery("(max-width:600px)");
+  const isMediumScreen = useMediaQuery("(max-width:960px)");
+
   const columns = [
-    { field: "product_id", headerName: "Product ID", flex: 0.5 },
-    { field: "product_name", headerName: "Product Name", flex: 1, renderCell },
-    { field: "sales_count", headerName: "Sales Count", flex: 1, renderCell },
-    { field: "sale_month", headerName: "Sale Month", flex: 1, renderCell },
-    { field: "sale_year", headerName: "Sale Year", flex: 1, renderCell },
+    {
+      field: "product_id",
+      headerName: "Product ID",
+      flex: isSmallScreen ? 50 : isMediumScreen ? 75 : 100,
+    },
+    {
+      field: "product_name",
+      headerName: "Product Name",
+      flex: isSmallScreen ? 250 : isMediumScreen ? 200 : 300,
+      renderCell,
+    },
+    {
+      field: "sales_count",
+      headerName: "Sales Count",
+      flex: isSmallScreen ? 100 : isMediumScreen ? 75 : 100,
+      renderCell,
+    },
+    {
+      field: "sale_month",
+      headerName: "Sale Month",
+      flex: isSmallScreen ? 100 : isMediumScreen ? 75 : 100,
+      renderCell,
+    },
+    {
+      field: "sale_year",
+      headerName: "Sale Year",
+      flex: isSmallScreen ? 100 : isMediumScreen ? 75 : 100,
+      renderCell,
+    },
     {
       field: "modified_date",
       headerName: "Modified Date",
-      flex: 1,
+      flex: isSmallScreen ? 100 : isMediumScreen ? 150 : 200,
       renderCell: (params) =>
         moment(params.value).format("DD/MM/YYYY HH:mm:ss"),
     },
     {
       field: "actions",
       headerName: "Actions",
-      flex: 1.5,
+      flex: isSmallScreen ? 100 : isMediumScreen ? 50 : 75,
       sortable: false,
       filterable: false,
       disableColumnMenu: true,
-      renderCell: (params) => {
-        const { id } = params.row;
-        return (
-          <div>
-            <Button
-              variant="outlined"
-              color="primary"
-              onClick={() => handleEdit(id, params.field)}
-              sx={{ mr: 1 }}
-            >
-              Edit
-            </Button>
-            <Button
-              variant="contained"
-              color="primary"
-              onClick={() => handleDelete(id)}
-              sx={{ mr: 1 }}
-            >
-              Delete
-            </Button>
-            <Button
-              variant="outlined"
-              color="primary"
-              onClick={() => handleEditPopup(id)}
-            >
-              Edit Popup
-            </Button>
-          </div>
-        );
-      },
+      renderCell: (params) => (
+        <Button
+          className={styles.button}
+          variant="outlined"
+          onClick={() => handleEdit(params.row.id, params.field)}
+        >
+          Edit
+        </Button>
+      ),
+    },
+    {
+      field: "delete",
+      headerName: " ",
+      flex: isSmallScreen ? 100 : isMediumScreen ? 60 : 90,
+      sortable: false,
+      filterable: false,
+      disableColumnMenu: true,
+      renderCell: (params) => (
+        <Button
+          className={styles.button}
+          variant="contained"
+          onClick={() => handleDelete(params.row.id)}
+        >
+          Delete
+        </Button>
+      ),
+    },
+    {
+      field: "editPopup",
+      headerName: "",
+      flex: isSmallScreen ? 100 : isMediumScreen ? 80 : 110,
+      sortable: false,
+      filterable: false,
+      disableColumnMenu: true,
+      renderCell: (params) => (
+        <Button
+          className={styles.button}
+          variant="outlined"
+          onClick={() => handleEditPopup(params.row.id)}
+        >
+          Edit Popup
+        </Button>
+      ),
     },
   ];
 
@@ -167,11 +209,24 @@ const GridTable = () => {
         <DataGrid
           rows={gridData}
           columns={columns}
+          initialState={{
+            pagination: {
+              paginationModel: { page: 0, pageSize: 5 },
+            },
+          }}
+          pageSizeOptions={[5, 10]}
           onCellEditCommit={handleRowUpdateAndValidate}
-          disableSelectionOnClick
+          // disableSelectionOnClick
           isCellEditable={(params) =>
             params.id === editingRowId && params.field === editingField
           }
+          className={styles.dataGridRoot}
+          classes={{
+            cell: styles.dataGridCell,
+            columnHeaders: styles.dataGridColumnHeaders,
+            viewport: styles.dataGridViewport,
+            footerContainer: styles.dataGridFooterContainer,
+          }}
         />
         <AddRowComponent openAddRowModal={openAddRowModal} />
         <ModalComponent
