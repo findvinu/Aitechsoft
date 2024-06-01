@@ -22,10 +22,11 @@ const useFetch = (method, url) => {
       }
     };
 
+    console.log("hook data", data);
     fetchData();
   }, [method, url]);
 
-  return { data, loading, error };
+  return { data, loading, error, setData };
 };
 
 export default useFetch;

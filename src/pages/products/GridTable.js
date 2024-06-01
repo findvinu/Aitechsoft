@@ -1,13 +1,20 @@
-import React, { useState, useMemo } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import React, { useState, useMemo, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import { DataGrid } from "@mui/x-data-grid";
 import { TextField, useMediaQuery } from "@mui/material";
-import { updateRow, addRow, deleteRow } from "../../store/slices/gridSlice";
+import {
+  updateRow,
+  addRow,
+  deleteRow,
+  fetchData,
+} from "../../store/slices/gridSlice";
 import { validateSalesCount, generateProductId } from "../../utils";
 import moment from "moment";
 import AddRowComponent from "./AddRowComponent";
 import ModalComponent from "./ModalComponent";
 import { ButtonComponent as Button } from "../../components/";
+// import useFetch from "./hooks/useFetch";
+// import { getDataURL } from "./api";
 import styles from "./GridTable.module.css";
 
 const GridTable = () => {
@@ -17,12 +24,22 @@ const GridTable = () => {
   const [initialData, setInitialData] = useState(null);
   const dispatch = useDispatch();
 
-  const data = useSelector((state) => state.grid.data);
+  const { data, loading, error } = useSelector((state) => state.grid);
+
+  useEffect(() => {
+    const method = "GET";
+    const url = "/data.json";
+    dispatch(fetchData({ method, url }));
+  }, [dispatch]);
+
   const gridData = useMemo(() => {
-    return data.map((row, index) => ({
-      ...row,
-      id: row.product_id || index + 1,
-    }));
+    return (
+      data.data &&
+      data.data.map((row, index) => ({
+        ...row,
+        id: row.product_id || index + 1,
+      }))
+    );
   }, [data]);
 
   const handleEdit = (id, field) => {
@@ -197,6 +214,18 @@ const GridTable = () => {
       ),
     },
   ];
+
+  if (loading) {
+    return <div>...Loading</div>;
+  }
+
+  if (error) {
+    return <div>Error: {error}</div>;
+  }
+
+  if (!data || !data.data) {
+    return <div>No data available</div>;
+  }
 
   return (
     <div>
