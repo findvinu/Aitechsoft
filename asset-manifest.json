@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/Aitechsoft/static/css/main.6f517c88.css",
-    "main.js": "/Aitechsoft/static/js/main.4062ff75.js",
+    "main.css": "/Aitechsoft/static/css/main.575d62d8.css",
+    "main.js": "/Aitechsoft/static/js/main.e71ac419.js",
     "index.html": "/Aitechsoft/index.html",
-    "main.6f517c88.css.map": "/Aitechsoft/static/css/main.6f517c88.css.map",
-    "main.4062ff75.js.map": "/Aitechsoft/static/js/main.4062ff75.js.map"
+    "main.575d62d8.css.map": "/Aitechsoft/static/css/main.575d62d8.css.map",
+    "main.e71ac419.js.map": "/Aitechsoft/static/js/main.e71ac419.js.map"
   },
   "entrypoints": [
-    "static/css/main.6f517c88.css",
-    "static/js/main.4062ff75.js"
+    "static/css/main.575d62d8.css",
+    "static/js/main.e71ac419.js"
   ]
 }
