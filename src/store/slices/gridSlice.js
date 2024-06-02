@@ -15,7 +15,14 @@ export const fetchData = createAsyncThunk(
         method: method.toLowerCase(),
         url,
       });
-      return response.data;
+
+      console.log("API response:", response.data.data);
+
+      if (Array.isArray(response.data.data)) {
+        return response.data;
+      } else {
+        throw new Error("Data is not an array");
+      }
     } catch (err) {
       return thunkAPI.rejectWithValue(err.message);
     }
@@ -27,21 +34,23 @@ const gridSlice = createSlice({
   initialState,
   reducers: {
     setData(state, action) {
-      state.data = action.payload;
+      state.data.data = Array.isArray(action.payload) ? action.payload : [];
     },
     addRow(state, action) {
-      state.data.push(action.payload);
+      state.data.data.push(action.payload);
     },
     updateRow(state, action) {
       const { id, newData } = action.payload;
-      const index = state.data.findIndex((item) => item.product_id === id);
+      const index = state.data.data.findIndex((item) => item.product_id === id);
       if (index !== -1) {
-        state.data[index] = { ...state.data[index], ...newData };
+        state.data.data[index] = { ...state.data.data[index], ...newData };
       }
     },
     deleteRow(state, action) {
       const id = action.payload;
-      state.data = state.data.filter((item) => item.product_id !== id);
+      state.data.data = state.data.data.filter(
+        (item) => item.product_id !== id
+      );
     },
   },
   extraReducers: (builder) => {

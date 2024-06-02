@@ -14,7 +14,7 @@ const useFetch = (method, url) => {
           method: method.toLowerCase(),
           url,
         });
-        setData(response.data);
+        setData(response.data.data);
       } catch (err) {
         setError(err);
       } finally {

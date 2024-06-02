@@ -67,7 +67,6 @@ const ModalComponent = ({ closeHandler, open, initialData, handleRowSave }) => {
 
   const rowSaveHandler = () => {
     handleRowSave(rowData);
-    console.log("rowData", rowData);
   };
 
   const rowChangeHandler = (e) => {
