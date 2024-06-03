@@ -1,8 +1,8 @@
 {
-  "name": "aitechsoft-mui",
+  "name": "react-redux-mui",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://findvinu.github.io/Aitechsoft",
+  "homepage": "https://findvinu.github.io/react-redux-mui",
   "dependencies": {
     "@emotion/react": "^11.11.4",
     "@emotion/styled": "^11.11.5",
