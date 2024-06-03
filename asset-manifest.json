@@ -1,13 +1,14 @@
 {
   "files": {
-    "main.css": "/Aitechsoft/static/css/main.575d62d8.css",
-    "main.js": "/Aitechsoft/static/js/main.e71ac419.js",
+    "main.css": "/Aitechsoft/static/css/main.aca69927.css",
+    "main.js": "/Aitechsoft/static/js/main.2483211d.js",
+    "static/media/vinuBytes.png": "/Aitechsoft/static/media/vinuBytes.c4c87fab3802519e572e.png",
     "index.html": "/Aitechsoft/index.html",
-    "main.575d62d8.css.map": "/Aitechsoft/static/css/main.575d62d8.css.map",
-    "main.e71ac419.js.map": "/Aitechsoft/static/js/main.e71ac419.js.map"
+    "main.aca69927.css.map": "/Aitechsoft/static/css/main.aca69927.css.map",
+    "main.2483211d.js.map": "/Aitechsoft/static/js/main.2483211d.js.map"
   },
   "entrypoints": [
-    "static/css/main.575d62d8.css",
-    "static/js/main.e71ac419.js"
+    "static/css/main.aca69927.css",
+    "static/js/main.2483211d.js"
   ]
 }
