@@ -14,7 +14,7 @@ import AddRowComponent from "./AddRowComponent";
 import ModalComponent from "./ModalComponent";
 import { ButtonComponent as Button } from "../../components/";
 // import useFetch from "./hooks/useFetch";
-// import { getDataURL } from "./api";
+import { getDataURL } from "../../api";
 import styles from "./GridTable.module.css";
 
 const GridTable = () => {
@@ -28,7 +28,7 @@ const GridTable = () => {
 
   useEffect(() => {
     const method = "GET";
-    const url = "/data.json";
+    const url = getDataURL;
     dispatch(fetchData({ method, url }));
   }, [dispatch]);
 
@@ -73,14 +73,27 @@ const GridTable = () => {
   };
 
   const handleRowSave = (newRow) => {
-    /* if (newRow.id) {
-      dispatch(updateRow(newRow));
+    if (newRow.product_id) {
+      dispatch(updateRow({ id: newRow.product_id, newData: newRow }));
+      setModalOpen(false);
+      console.log("handleRowSave in if gridtable", newRow);
     } else {
-      newRow.id = generateProductId(gridData);
-      dispatch(addRow(newRow));
-    } */
-    dispatch(updateRow({ id: newRow.product_id, newData: newRow }));
-    setModalOpen(false);
+      newRow.product_id = generateProductId(gridData);
+      dispatch(
+        addRow({
+          ...newRow,
+          modified_date: new Date().toLocaleString("en-GB", {
+            day: "2-digit",
+            month: "2-digit",
+            year: "numeric",
+            hour: "2-digit",
+            minute: "2-digit",
+            second: "2-digit",
+          }),
+        })
+      );
+    }
+
     return newRow;
   };
 

@@ -63,15 +63,6 @@ const AddRowComponent = ({ openAddRowModal }) => {
 
   return (
     <TableRow sx={{ display: { xs: "none", md: "block" } }}>
-      {/* <TableCell>
-        <TextField
-          name="product_id"
-          label="Product ID"
-          value={lastProductItemId}
-          onChange={rowChangeHandler}
-          size="small"
-        />
-      </TableCell> */}
       <TableCell>
         <TextField
           name="product_name"
@@ -108,11 +99,17 @@ const AddRowComponent = ({ openAddRowModal }) => {
           size="small"
         />
       </TableCell>
+      <TableCell> </TableCell>
+      <TableCell> </TableCell>
+      <TableCell> </TableCell>
+      <TableCell> </TableCell>
+      <TableCell> </TableCell>
+      <TableCell> </TableCell>
       <TableCell>
         <Button
           variant="contained"
           onClick={addRowHandler}
-          sx={{ mt: 1.7, width: "100px" }}
+          sx={{ width: "100px" }}
         >
           Add Row
         </Button>
@@ -121,7 +118,7 @@ const AddRowComponent = ({ openAddRowModal }) => {
         <Button
           variant="contained"
           onClick={openAddRowModal}
-          sx={{ mt: 1.7, width: "170px" }}
+          sx={{ width: "170px" }}
         >
           Add Row in Popup
         </Button>
