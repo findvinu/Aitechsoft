@@ -73,13 +73,15 @@ const GridTable = () => {
   };
 
   const handleRowSave = (newRow) => {
-    if (newRow.id) {
+    /* if (newRow.id) {
       dispatch(updateRow(newRow));
     } else {
       newRow.id = generateProductId(gridData);
       dispatch(addRow(newRow));
-    }
+    } */
+    dispatch(updateRow({ id: newRow.product_id, newData: newRow }));
     setModalOpen(false);
+    return newRow;
   };
 
   const openAddRowModal = () => {

@@ -38,6 +38,7 @@ const gridSlice = createSlice({
     },
     addRow(state, action) {
       state.data.data.push(action.payload);
+      console.log("addRow", action);
     },
     updateRow(state, action) {
       const { id, newData } = action.payload;

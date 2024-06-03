@@ -1,13 +1,16 @@
 import { TextField, TableCell, TableRow } from "@mui/material";
 import { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addRow } from "../../store/slices/gridSlice";
 import { ButtonComponent as Button } from "../../components/";
 
-const AddRowComponent = ({ lastProductItemId, openAddRowModal }) => {
+const AddRowComponent = ({ openAddRowModal }) => {
   const dispatch = useDispatch();
+  const data = useSelector((state) => state.grid.data);
+  const lastProductItemId = data.data.length;
+
   const [rowData, setRowData] = useState({
-    product_id: lastProductItemId,
+    product_id: lastProductItemId + 1,
     product_name: "",
     sales_count: "",
     sale_month: "",
@@ -60,7 +63,7 @@ const AddRowComponent = ({ lastProductItemId, openAddRowModal }) => {
 
   return (
     <TableRow sx={{ display: { xs: "none", md: "block" } }}>
-      <TableCell>
+      {/* <TableCell>
         <TextField
           name="product_id"
           label="Product ID"
@@ -68,7 +71,7 @@ const AddRowComponent = ({ lastProductItemId, openAddRowModal }) => {
           onChange={rowChangeHandler}
           size="small"
         />
-      </TableCell>
+      </TableCell> */}
       <TableCell>
         <TextField
           name="product_name"

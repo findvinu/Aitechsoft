@@ -36,3 +36,12 @@
 .nav a.active{
   text-decoration: underline
 }
+
+.logoWrapper{
+  display: flex !important;
+  align-items: center; 
+}
+.logo-img{
+  width: 50px;
+  margin-right: 10px
+}

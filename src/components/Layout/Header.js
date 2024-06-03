@@ -1,5 +1,6 @@
 import { AppBar, Typography, Toolbar, Button, Box } from "@mui/material/";
 import { NavLink } from "react-router-dom";
+import Logo from "../../assets/images/vinuBytes.png";
 
 const navItems = [
   { name: "Home", link: "/" },
@@ -16,8 +17,10 @@ const Header = () => {
           variant="h6"
           component="div"
           sx={{ flexGrow: 1, display: { xs: "none", sm: "block" } }}
+          className="logoWrapper"
         >
-          Aitechsoft
+          <img src={Logo} alt="vinu bytes" className="logo-img" />
+          Vinu Bytes
         </Typography>
         <Box sx={{ display: { xs: "none", sm: "block" } }}>
           {navItems.map((item, key) => (
