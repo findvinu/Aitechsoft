@@ -253,8 +253,12 @@ const GridTable = () => {
         <DataGrid
           rows={gridData}
           columns={columns}
-          pageSize={5}
-          rowsPerPageOptions={[5]}
+          initialState={{
+            pagination: {
+              paginationModel: { page: 0, pageSize: 8 },
+            },
+          }}
+          pageSizeOptions={[5, 10]}
           onCellEditCommit={handleRowUpdateAndValidate}
           // disableSelectionOnClick
           isCellEditable={(params) =>
