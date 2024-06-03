@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/react-redux-mui/static/css/main.c09dfd99.css",
-    "main.js": "/react-redux-mui/static/js/main.51428ecc.js",
+    "main.js": "/react-redux-mui/static/js/main.1b27365c.js",
     "static/media/vinuBytes.png": "/react-redux-mui/static/media/vinuBytes.c4c87fab3802519e572e.png",
     "index.html": "/react-redux-mui/index.html",
     "main.c09dfd99.css.map": "/react-redux-mui/static/css/main.c09dfd99.css.map",
-    "main.51428ecc.js.map": "/react-redux-mui/static/js/main.51428ecc.js.map"
+    "main.1b27365c.js.map": "/react-redux-mui/static/js/main.1b27365c.js.map"
   },
   "entrypoints": [
     "static/css/main.c09dfd99.css",
-    "static/js/main.51428ecc.js"
+    "static/js/main.1b27365c.js"
   ]
 }
