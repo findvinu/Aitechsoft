@@ -4,6 +4,9 @@ import ProductDetailsForm from "./ProductDetailsForm";
 import RemarksForm from "./RemarksForm";
 import HeaderDetailsForm from "./HeaderDetailsForm";
 import { ButtonComponent as Button } from "../../components/";
+import { useDispatch, useSelector } from "react-redux";
+import { addRow, updateRow } from "../../store/slices/gridSlice";
+import moment from "moment";
 
 const StepperComponent = () => {
   const [activeStep, setActiveStep] = useState(0);
@@ -20,6 +23,9 @@ const StepperComponent = () => {
     saleYear: false,
   });
   const [remarks, setRemarks] = useState("");
+  const dispatch = useDispatch();
+  const gridData = useSelector((state) => state.grid.data);
+
   const steps = ["Product Details", "Remarks", "Header & Details"];
 
   const validateFields = () => {
@@ -70,33 +76,21 @@ const StepperComponent = () => {
   };
 
   const handleSaveAndClose = () => {
-    // Mock save operation
-    console.log("Saving data...");
+    const newRow = {
+      product_id: gridData.length + 1,
+      product_name: productDetails.productName,
+      sales_count: productDetails.salesCount,
+      sale_month: productDetails.saleMonth,
+      sale_year: productDetails.saleYear,
+      modified_date: moment().format("DD/MM/YYYY HH:mm:ss"),
+    };
+
+    dispatch(addRow(newRow));
+    console.log("productDetails", newRow);
 
     setTimeout(() => {
-      console.log("Data saved:", {
-        productDetails,
-        remarks,
-      });
-
-      // Simulate closing the form
       alert("Transaction saved and closed.");
-
-      // Reset all state and go back to the first step
-      setActiveStep(0);
-      setProductDetails({
-        productName: "",
-        salesCount: "",
-        saleMonth: "",
-        saleYear: "",
-      });
-      setRemarks("");
-      setErrors({
-        productName: false,
-        salesCount: false,
-        saleMonth: false,
-        saleYear: false,
-      });
+      handleRestart();
     }, 1000); // Simulate a delay of 1 second
   };
 
