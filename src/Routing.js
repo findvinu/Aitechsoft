@@ -3,15 +3,15 @@ import GridTable from "./pages/products/GridTable";
 import Home from "./pages/Home";
 import StepperComponent from "./pages/products/StepperComponent";
 import TabsComponent from "./pages/products/TabsComponent";
-import ModalComponent from "./pages/products/ModalComponent";
 
 const Routing = () => {
   return (
     <Routes>
-      <Route path="/" element={<Home />} />
+      <Route exact path="/" element={<Home />} />
       <Route path="/grid-table" element={<GridTable />} />
       <Route path="/stepper" element={<StepperComponent />} />
       <Route path="/tabs" element={<TabsComponent />} />
+      <Route path="*" component={() => <div>404 Not Found</div>} />
     </Routes>
   );
 };
